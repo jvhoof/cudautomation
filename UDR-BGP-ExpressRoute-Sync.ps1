@@ -40,15 +40,15 @@
 
 param(
     [parameter(Mandatory=$true)]
-    [String] $NGF_VM_IFC_Name = "JVH5-NIC-LNX",
+    [String] $NGF_VM_IFC_Name = "Network interface name of the NGF",
     [parameter(Mandatory=$true)]
-    [String] $NGF_VM_IFC_RG = "JVH5-RG",
+    [String] $NGF_VM_IFC_RG = "Resource group containing the NGF",
     [parameter(Mandatory=$true)]
-    [String] $NGF_VM_IP = "172.16.136.4",
+    [String] $NGF_VM_IP = "Private IP address of the NGF",
     [parameter(Mandatory=$true)]
-    [String] $RT_Name = "JVH11RTWEB",
+    [String] $RT_Name = "Route table for the services protected by the NGF",
     [parameter(Mandatory=$true)]
-    [String] $RT_RG = "JVH11",
+    [String] $RT_RG = "Resource group containing the route table",
     [parameter(Mandatory=$false)]
     [bool] $Simulate = $false
 )
