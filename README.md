@@ -1,4 +1,4 @@
-# Barracuda Azure Automation Scripts
+# Azure Automation Scripts
 
 The scripts in this project require an Azure Automation account in your Azure setup. To setup you need to follow the following 
 
