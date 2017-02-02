@@ -92,7 +92,7 @@ try {
     # Reading the NGF subnet routetable. This routetable contains the BGP/ExpressRoutes that need to be duplicated
     $RT1 = Get-AzureRmEffectiveRouteTable -NetworkInterfaceName $NGF_VM_IFC_Name -ResourceGroupName $NGF_VM_IFC_RG
     foreach ($element in $RT1) {
-        if( $element.NextHopType.CompareTo("VirtualNetworkGateway") -eq 0 ) {
+        if( ($element.NextHopType.CompareTo("VirtualNetworkGateway") -eq 0) -And (-Not $src.ContainsKey($element.AddressPrefix.Item(0)) ) ) {
             $src.add($element.AddressPrefix.Item(0), $element.Name)
         }
     }
@@ -100,7 +100,7 @@ try {
     # Reading the route table that needs updating
     $RT2 = Get-AzureRmRouteTable -Name $RT_Name -ResourceGroupName $RT_RG
     foreach ($element in $RT2.Routes) {
-        if( $element.NextHopType.CompareTo("VirtualAppliance") -eq 0 ) {
+        if( ($element.NextHopType.CompareTo("VirtualAppliance") -eq 0) -And (-Not $src.ContainsKey($element.AddressPrefix)) ) {
             $dst.Add($element.AddressPrefix, $element.Name)
         }
     }
